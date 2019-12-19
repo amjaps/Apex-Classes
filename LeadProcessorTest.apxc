@@ -1,0 +1,34 @@
+/*
+
+	Name : Amar Soni
+	email : 411702@student.nitandhra.ac.in
+	
+	This file contains LeadProcessorTest Apex class. It has unit tests 
+	that achieve 100% code coverage for the class LeadProcessor
+
+*/
+
+
+@isTest
+private class LeadProcessorTest {
+    @testSetup
+    static void setup() {
+        List<lead> lead_list = new List<lead>();
+        for(Integer i = 0; i < 200; i++){
+            Lead l = new lead();
+            l.LastName = 'name' + i;
+            l.Company = 'Company';
+            l.Status = 'Random Status';
+            lead_list.add(l); 
+        }
+        insert lead_list;
+    }
+	@isTest
+    static void testIt() {
+        Test.startTest();
+        LeadProcessor lp = new LeadProcessor();
+        Id batchId = Database.executeBatch(lp);
+        Test.stopTest();
+        System.assertEquals(200, [select count() from Lead where LeadSource = 'Dreamforce' AND Rating = 'Hot']);
+    }
+}
