@@ -1,7 +1,7 @@
 /*
 
 	Name : Amar Soni
-	email : 411702@student.nitandhra.ac.in
+	email : amar@something.com
 	
 	This file contains LeadProcessor Apex class implementing Database.Batchable interface to update all the 
 	Lead records in the org with LeadSource = 'Dreamforce' and Rating = 'Hot'
